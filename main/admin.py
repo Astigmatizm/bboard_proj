@@ -1,3 +1,8 @@
 from django.contrib import admin
+from main.models import AdvUser
 
-# Register your models here.
+# user = admin
+# email = (null)
+# password = 123
+
+admin.site.register(AdvUser)
