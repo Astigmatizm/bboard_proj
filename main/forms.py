@@ -10,7 +10,8 @@ class ProfileEditForm(forms.ModelForm):
 
     class Meta:
         model = AdvUser
-        fields = ('username', 'email', 'firstname', 'lastname', 'send_message')
+        fields = ('username', 'email', 'firstname', 'lastname', 'send_messages')
+
 
 class RegisterForm(forms.ModelForm):
     email = forms.EmailField(required=True, label='Адрес электронной почты')
@@ -44,7 +45,7 @@ class RegisterForm(forms.ModelForm):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data['password1'])
         user.is_active = False
-        user.is_activeted = False
+        user.is_activated = False
         if commit:
             user.save()
         post_register.send(RegisterForm, instance=user)
@@ -52,5 +53,4 @@ class RegisterForm(forms.ModelForm):
 
     class Meta:
         model = AdvUser
-        fields = ('username', 'email', 'password1', 'password2', 'firstname', 'lastname', 'send_message')
-
+        fields = ('username', 'email', 'password1', 'password2', 'firstname', 'lastname', 'send_messages')
